@@ -27,6 +27,7 @@ local cool = { -- Userid, Title, Color (1 = rainbow, 0 = no rainbow, 2 = pink, 3
     {12639931, "Fendo (Owner)", 5},
     {1698664417, "samy (Owner", 3},
     {995994548, "bude (first buyer)", 6},
+    {1061095, ">N6<", 7},
     {35746212, "samy (Owner)", 3}
 }
 
@@ -63,6 +64,9 @@ for i,v in pairs(plrs:GetChildren()) do
                 end
                  if a[3] == 6 then
                     tag.Nameplate.TextColor3 = Color3.fromRGB(59, 106, 243)
+                 end
+             if a[3] == 7 then
+                    tag.Nameplate.TextColor3 = Color3.fromRGB(120, 81, 169)--royal purple
                 end
                 tag.Parent = v.Character.Head
             end
@@ -96,6 +100,9 @@ for i,v in pairs(plrs:GetChildren()) do
             end
              if a[3] == 6 then
                     tag.Nameplate.TextColor3 = Color3.fromRGB(59, 106, 243)
+             end
+            if a[3] == 7 then
+                    tag.Nameplate.TextColor3 = Color3.fromRGB(120, 81, 169)--royal purple
                 end
             tag.Parent = v.Character.Head
         end
@@ -133,6 +140,9 @@ plrs.PlayerAdded:Connect(function(v)
             end
              if a[3] == 6 then
                     tag.Nameplate.TextColor3 = Color3.fromRGB(59, 106, 243)
+             end
+            if a[3] == 7 then
+                    tag.Nameplate.TextColor3 = Color3.fromRGB(120, 81, 169)--royal purple
                 end
                 tag.Parent = v.Character.Head
             end
