@@ -72,10 +72,10 @@ FPA["Themes"] = {
     },
         ["fpa"] = {
         ["Frame"] = {
-            ["BackgroundColor3"] = Color3.fromRGB(0, 206, 247);
+            ["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
         },
         ["TextLabel"] = {
-            ["TextColor3"] = Color3.fromRGB(255, 255, 255)
+            ["TextColor3"] = Color3.fromRGB(0, 206, 247)
         }
     }
 }
@@ -105,8 +105,8 @@ end
 
 function FPA:Notify(Title, Message, Type, Duration)
     FPA["Config"] = _G.Config
-	local Type2Color = {['error'] = Color3.fromRGB(255, 0, 0), ['warn'] = Color3.fromRGB(255, 0, 0), ['success'] = Color3.fromRGB(255, 0, 0), ['normal'] = Color3.fromRGB(255, 0, 0)}
-	local Frame = New("Frame", {Name = "MainFrame", Parent = NotificationHolder, BackgroundColor3 = Color3.fromRGB(255, 0, 0),
+	local Type2Color = {['error'] = Color3.fromRGB(0, 206, 247), ['warn'] = Color3.fromRGB(0, 206, 247), ['success'] = Color3.fromRGB(0, 206, 247), ['normal'] = Color3.fromRGB(0, 206, 247)}
+	local Frame = New("Frame", {Name = "MainFrame", Parent = NotificationHolder, BackgroundColor3 = Color3.fromRGB(0, 206, 247),
 		Size = UDim2.new(0.9, 0, 0.097, 0), ZIndex = 2, BackgroundTransparency = 1
 	}); local DropShadow = New("ImageLabel", {Parent = Frame, BackgroundTransparency = 1, Position = UDim2.new(0.5, 0, 0.512, 0), Size = UDim2.new(1.053, 0, 1.135, 0), Image = "rbxassetid://7912134082",
 		ImageColor3 = Type2Color[Type:lower()], ImageTransparency = 1, ScaleType = "Slice", SliceCenter = Rect.new(95, 95, 205, 205)
@@ -123,7 +123,7 @@ function FPA:Notify(Title, Message, Type, Duration)
 	local Hover = New("TextButton", {Parent = Frame, BackgroundTransparency = 1, Text = "", Size = UDim2.new(1, 0, 1, 0), Position = UDim2.new(0.5, 0, 0.5, 0), ZIndex = 3});
     FPA:ApplyTheme((FPA["Config"]["Theme"]), Frame)
     if FPA["Config"]["Theme"]:lower() == "light" and Type:lower() == "normal" then 
-        Line["BackgroundColor3"] = Color3.new(255, 0, 0);
+        Line["BackgroundColor3"] = Color3.new(0, 206, 247);
         DropShadow["ImageColor3"] = Color3.new(0, 0, 0)
     end
 
