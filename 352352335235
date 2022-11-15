@@ -33,11 +33,11 @@ local NotificationHolder = New("Frame", {
 }); New("UIListLayout", {Parent = NotificationHolder, Padding = UDim.new(0, 15), HorizontalAlignment = "Center", VerticalAlignment = "Bottom"});
 New("UIPadding", {Parent = NotificationHolder, PaddingBottom = UDim.new(0, 20), PaddingTop = UDim.new(0, 20)});
 
-local Dumbass = {};
+local FPA = {};
 
-Dumbass["Config"] = { ["Theme"] = "Dark" }
+FPA["Config"] = { ["Theme"] = "Dark" }
 
-Dumbass["Themes"] = {
+FPA["Themes"] = {
     ["light"] = {
         ["Frame"] = {
             ["BackgroundColor3"] = Color3.new(1, 1, 1);
@@ -80,14 +80,14 @@ Dumbass["Themes"] = {
     }
 }
 
-function Dumbass:TextConstraint(Item)
+function FPA:TextConstraint(Item)
 	New("UITextSizeConstraint", {Parent = Item, MaxTextSize = Item["TextSize"]}); Item["TextScaled"] = true
 end
 
-function Dumbass:ApplyTheme(Theme, Frame)
+function FPA:ApplyTheme(Theme, Frame)
     local Desc = Frame:GetDescendants()
-    if Dumbass["Themes"][Theme:lower()] then
-        for i,v in next, Dumbass["Themes"][Theme:lower()] do
+    if FPA["Themes"][Theme:lower()] then
+        for i,v in next, FPA["Themes"][Theme:lower()] do
             for a,b in next, Desc do
                 if b["ClassName"] == i and b["Name"] ~= "Line" then
                     for c,d in next, v do
@@ -103,8 +103,8 @@ function Dumbass:ApplyTheme(Theme, Frame)
     end
 end
 
-function Dumbass:Notify(Title, Message, Type, Duration)
-    Dumbass["Config"] = _G.Config
+function FPA:Notify(Title, Message, Type, Duration)
+    FPA["Config"] = _G.Config
 	local Type2Color = {['error'] = Color3.fromRGB(0, 206, 247), ['warn'] = Color3.fromRGB(0, 206, 247), ['success'] = Color3.fromRGB(0, 206, 247), ['normal'] = Color3.fromRGB(0, 206, 247)}
 	local Frame = New("Frame", {Name = "MainFrame", Parent = NotificationHolder, BackgroundColor3 = Color3.fromRGB(0, 206, 247),
 		Size = UDim2.new(0.9, 0, 0.097, 0), ZIndex = 2, BackgroundTransparency = 1
@@ -113,16 +113,16 @@ function Dumbass:Notify(Title, Message, Type, Duration)
 	}); New("UICorner", {Parent = Frame, CornerRadius = UDim.new(0, 5)}); New("UICorner", {Parent = DropShadow, CornerRadius = UDim.new(0, 5)});
 	local Header = New("TextLabel", {Parent = Frame, BackgroundTransparency = 1, Position = UDim2.new(0.237, 0, 0.172, 0), Size = UDim2.new(0.4, 0, 0.358, 0), ZIndex = 2, Font = "GothamMedium",
 		Text = Title or "FPA", TextSize = 14, TextXAlignment = "Left", TextScaled = true, TextColor3 = Color3.new(1, 1, 1)
-	}); Dumbass:TextConstraint(Header);
+	}); FPA:TextConstraint(Header);
 	local Msg = New("TextLabel", {Parent = Frame, BackgroundTransparency = 1, Position = UDim2.new(0.5, 0, 0.563, 0), Size = UDim2.new(0.927, 0, 0.5, 0), ZIndex = 2, Font = "Gotham",
 		Text = Message, TextSize = 12, TextXAlignment = "Left", TextScaled = true, TextColor3 = Color3.new(1, 1, 1)
-	}); Dumbass:TextConstraint(Msg);
+	}); FPA:TextConstraint(Msg);
 	local LineHolder = New("Frame", {Parent = Frame, BackgroundTransparency = 1, Position = UDim2.new(0.5, 0, 0.93, 0), Size = UDim2.new(0.9278, 0, 0, 1), ZIndex = 2})
 	New("UIListLayout", {Parent = LineHolder, HorizontalAlignment = "Left", VerticalAlignment = "Center"});
 	local Line = New("Frame", {Name = "Line", Parent = LineHolder, BackgroundColor3 = Type2Color[Type:lower()], Size = UDim2.new(0, 0, 4, 0), ZIndex = 2});
 	local Hover = New("TextButton", {Parent = Frame, BackgroundTransparency = 1, Text = "", Size = UDim2.new(1, 0, 1, 0), Position = UDim2.new(0.5, 0, 0.5, 0), ZIndex = 3});
-    Dumbass:ApplyTheme((FPA["Config"]["Theme"]), Frame)
-    if Dumbass["Config"]["Theme"]:lower() == "light" and Type:lower() == "normal" then 
+    FPA:ApplyTheme((FPA["Config"]["Theme"]), Frame)
+    if FPA["Config"]["Theme"]:lower() == "light" and Type:lower() == "normal" then 
         Line["BackgroundColor3"] = Color3.new(0, 206, 247);
         DropShadow["ImageColor3"] = Color3.new(0, 0, 0)
     end
@@ -152,4 +152,4 @@ function Dumbass:Notify(Title, Message, Type, Duration)
         Tween(Frame, 0.25, "Quint", "Out", {BackgroundTransparency = 1}); wait(0.25); Frame:Destroy();
     end)()
 end
-return Dumbass
+return FPA
